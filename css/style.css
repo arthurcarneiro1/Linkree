@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+.extra-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.btn-link {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.05);
+    color: black;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.btn-link:hover {
+    background: rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+/* Dark mode */
+body.dark .btn-link {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+body.dark .btn-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+.decorative-blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(135deg, #ff8c00, #ff0080);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: blobMove 6s ease-in-out infinite;
+    filter: blur(1px);
+    opacity: 0.6;
+}
+
+/* Animação do blob */
+@keyframes blobMove {
+    0% {
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    33% {
+        border-radius: 60% 40% 70% 30% / 30% 50% 50% 70%;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    66% {
+        border-radius: 40% 60% 30% 70% / 60% 40% 50% 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Modo escuro */
+body.dark .decorative-blob {
+    background: linear-gradient(135deg, #00e1ff, #0080ff);
+}
+
+.profile-pic-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+#change-photo-btn {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: none;
+  background-color: #000000;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.3s, background-color 0.3s, transform 0.15s;
+  user-select: none;
+  /* Para dispositivos touch, habilitar toque */
+  -webkit-tap-highlight-color: transparent;
+}
+
+#change-photo-btn:hover,
+#change-photo-btn:focus {
+  opacity: 1;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Efeito visual para toque (quando clicado) */
+#change-photo-btn:active {
+  transform: translateX(-50%) scale(0.95);
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  opacity: 1;
+}
+
+body.dark {
+    background-color: #121212;
+    color: white;
+}
+
+
+/* Container e textos */
+.container {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+/* Switch container */
+.switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  --width-of-switch: 3.5em;
+  --height-of-switch: 2em;
+  --size-of-icon: 1.4em;
+  --slider-offset: 0.3em;
+  width: var(--width-of-switch);
+  height: var(--height-of-switch);
+}
+
+/* O resto do CSS do switch continua igual */
+
+
+/* Esconde o checkbox padrão */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider visível */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #595970;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+/* Bolinha do slider */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--size-of-icon);
+  width: var(--size-of-icon);
+  border-radius: 20px;
+  left: var(--slider-offset);
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+  transition: 0.4s;
+}
+
+/* Quando marcado (dark mode ativado) */
+input:checked + .slider {
+  background-color: #303136;
+}
+
+input:checked + .slider:before {
+  left: calc(100% - (var(--size-of-icon) + var(--slider-offset)));
+  background: #303136;
+  box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+/* Profile */
+.profile {
+    display: flex;
+    flex-direction: column; /* mantém os itens em coluna */
+    align-items: center;    /* centraliza na horizontal */
+    justify-content: center;/* centraliza na vertical */
+    gap: 10px;              /* espaço entre os elementos */
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid black; /* padrão para claro */
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+}
+
+body.dark .profile-pic {
+    border-color: white;
+}
+
+.username {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.bio {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+/* Links */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.social-icon {
+    display: block;
+    background: rgba(0, 0, 0, 0.05); /* fundo claro no modo claro */
+    padding: 15px;
+    border-radius: 10px;
+    color: black; /* texto preto no claro */
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-icon:hover {
+    background: rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+body.dark .social-icon {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+body.dark .social-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Botão para alternar tema */
+#theme-toggle {
+    margin-top: 15px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #eee;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}
+
+body.dark #theme-toggle {
+    background-color: #333;
+    color: #eee;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: auto;
+    transition: color 0.3s;
+}
+
+body.dark footer {
+    color: #ccc;
+}
+
+/* ======== RESPONSIVIDADE ======== */
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+    .username {
+        font-size: 1.5rem;
+    }
+    .bio {
+        font-size: 1rem;
+    }
+    .social-icon {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+/* 📱➡💻 Tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .social-icon {
+        width: 45%;
+    }
+}
+
+/* 💻 PC */
+@media (min-width: 1025px) {
+    .links {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .social-icon {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    }
+
+}

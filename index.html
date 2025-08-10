@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+    
+
+    
+</head>
+<body>
+    <div class="container">
+      <div class="profile">
+  <div class="profile-pic-wrapper" style="position: relative; display: inline-block;">
+    <div class="decorative-blob"></div>
+    <img src="img/Perfil.jpg" alt="Profile Picture" class="profile-pic">
+    <button id="change-photo-btn">Click</button>
+  </div>
+  <h1 class="username">Arthur Carneiro</h1>
+  <p class="bio">Eng. de Software</p>
+<div class="extra-links">
+  <a href="404.html" target="_blank" class="btn-link"><i class="fas fa-folder-open"></i>
+     Portfólio
+  </a>
+  <a href="404.html" target="_blank" class="btn-link">
+    <i class="fas fa-file-alt"></i> Currículo
+  </a>
+</div>
+
+  <!-- Switch para tema claro/escuro -->
+  <label class="switch">
+      <input type="checkbox" id="theme-toggle">
+      <span class="slider"></span>
+  </label>
+</div>
+
+
+        <div class="links">
+               <a href="https://github.com/arthurcarneiro1" class="social-icon" target="_blank">
+    <i class="fab fa-github"></i> GitHub
+  </a>
+  <a href="https://www.linkedin.com/in/carneirodev2002/" class="social-icon" target="_blank">
+    <i class="fab fa-linkedin"></i>      LinkedIn
+  </a>
+   <a href="404.html" class="social-icon">
+    <i class="fa-brands fa-instagram"></i> Instagram
+  </a>
+  <a href="https://wa.me/556399942516" class="social-icon" target="_blank">
+    <i class="fab fa-whatsapp"></i> WhatsApp
+  </a>
+  <a href="mailto:arthurcarneiro098@gmail.com" class="social-icon">
+    <i class="fas fa-envelope"></i> Email
+  </a>
+ 
+  <a href="https://chat.whatsapp.com/GL39YndYyF19aDKNBT8erC" class="social-icon">
+    <i class="fab fa-whatsapp"></i>  Grupo Papo Dev
+  </a>
+        </div>
+    </div>
+    <footer>
+    <p>Desenvolvido por <strong>Arthur Carneiro</strong> © 2025</p>
+    </footer>
+   
+<script>
+  const toggleCheckbox = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  // Verifica se o usuário já salvou preferência no localStorage
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark');
+    toggleCheckbox.checked = true;
+  }
+
+  toggleCheckbox.addEventListener('change', () => {
+    if (toggleCheckbox.checked) {
+      body.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      body.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+</script>
+<script>
+  const btn = document.getElementById('change-photo-btn');
+  const profilePic = document.querySelector('.profile-pic');
+
+  const fotoOriginal = 'img/Perfil.jpg';
+  const fotoAnime = 'img/perfilAnime.webp';
+
+  let usandoAnime = false;
+
+  btn.addEventListener('click', () => {
+    if (usandoAnime) {
+      profilePic.src = fotoOriginal;
+    } else {
+      profilePic.src = fotoAnime;
+    }
+    usandoAnime = !usandoAnime;
+  });
+</script>
+
+
+
+    
+</body>
+</html>
