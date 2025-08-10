@@ -1,17 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+
+:root {
+    --color-bg-light: #fff;
+    --color-bg-dark: #121212;
+    --color-text-light: #000;
+    --color-text-dark: #fff;
+    --color-accent: #ff0080;
+    --color-accent2: #ff8c00;
+    --color-accent-dark1: #00e1ff;
+    --color-accent-dark2: #0080ff;
+    --color-btn-bg: rgba(0, 0, 0, 0.05);
+    --color-btn-bg-hover: rgba(0, 0, 0, 0.15);
+    --color-btn-bg-dark: rgba(255,255,255,0.1);
+    --color-btn-bg-dark-hover: rgba(255,255,255,0.3);
+    --transition: 0.3s cubic-bezier(.4,0,.2,1);
+    --radius: 10px;
+}
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: white;
-    color: black;
+    background: var(--color-bg-light);
+    color: var(--color-text-light);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background var(--transition), color var(--transition);
 }
 
+body.dark {
+    background: var(--color-bg-dark);
+    color: var(--color-text-dark);
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
 
 .extra-links {
     display: flex;
@@ -24,31 +51,29 @@ body {
 .btn-link {
     display: inline-block;
     padding: 12px 20px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.05);
-    color: black;
+    border-radius: var(--radius);
+    background: var(--color-btn-bg);
+    color: var(--color-text-light);
     font-size: 1.05rem;
     text-decoration: none;
-    transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
+    transition: background var(--transition), color var(--transition), transform 0.2s;
     font-weight: 500;
+    outline: none;
 }
 
-.btn-link:hover {
-    background: rgba(0, 0, 0, 0.15);
+.btn-link:hover, .btn-link:focus {
+    background: var(--color-btn-bg-hover);
     transform: scale(1.05);
 }
 
-/* Dark mode */
 body.dark .btn-link {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
+    background: var(--color-btn-bg-dark);
+    color: var(--color-text-dark);
 }
 
-body.dark .btn-link:hover {
-    background: rgba(255, 255, 255, 0.3);
+body.dark .btn-link:hover, body.dark .btn-link:focus {
+    background: var(--color-btn-bg-dark-hover);
 }
-
 
 .decorative-blob {
     position: absolute;
@@ -56,16 +81,20 @@ body.dark .btn-link:hover {
     left: 50%;
     width: 160px;
     height: 160px;
-    background: linear-gradient(135deg, #ff8c00, #ff0080);
+    background: linear-gradient(135deg, var(--color-accent2), var(--color-accent));
     border-radius: 50%;
     transform: translate(-50%, -50%);
     z-index: -1;
     animation: blobMove 6s ease-in-out infinite;
     filter: blur(1px);
     opacity: 0.6;
+    pointer-events: none;
 }
 
-/* Animação do blob */
+body.dark .decorative-blob {
+    background: linear-gradient(135deg, var(--color-accent-dark1), var(--color-accent-dark2));
+}
+
 @keyframes blobMove {
     0% {
         border-radius: 50%;
@@ -85,134 +114,17 @@ body.dark .btn-link:hover {
     }
 }
 
-/* Modo escuro */
-body.dark .decorative-blob {
-    background: linear-gradient(135deg, #00e1ff, #0080ff);
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
 .profile-pic-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-#change-photo-btn {
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: none;
-  background-color: #000000;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  cursor: pointer;
-  opacity: 0.85;
-  transition: opacity 0.3s, background-color 0.3s, transform 0.15s;
-  user-select: none;
-  /* Para dispositivos touch, habilitar toque */
-  -webkit-tap-highlight-color: transparent;
-}
-
-#change-photo-btn:hover,
-#change-photo-btn:focus {
-  opacity: 1;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-  transform: translateX(-50%) scale(1.1);
-}
-
-/* Efeito visual para toque (quando clicado) */
-#change-photo-btn:active {
-  transform: translateX(-50%) scale(0.95);
-  background-color: #000000;
-  color: rgb(255, 255, 255);
-  opacity: 1;
-}
-
-body.dark {
-    background-color: #121212;
-    color: white;
-}
-
-
-/* Container e textos */
-.container {
-    max-width: 900px;
-    width: 100%;
-    text-align: center;
-}
-/* Switch container */
-.switch {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  --width-of-switch: 3.5em;
-  --height-of-switch: 2em;
-  --size-of-icon: 1.4em;
-  --slider-offset: 0.3em;
-  width: var(--width-of-switch);
-  height: var(--height-of-switch);
-}
-
-/* O resto do CSS do switch continua igual */
-
-
-/* Esconde o checkbox padrão */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* Slider visível */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #595970;
-  transition: 0.4s;
-  border-radius: 30px;
-}
-
-/* Bolinha do slider */
-.slider:before {
-  position: absolute;
-  content: "";
-  height: var(--size-of-icon);
-  width: var(--size-of-icon);
-  border-radius: 20px;
-  left: var(--slider-offset);
-  top: 50%;
-  transform: translateY(-50%);
-  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
-  transition: 0.4s;
-}
-
-/* Quando marcado (dark mode ativado) */
-input:checked + .slider {
-  background-color: #303136;
-}
-
-input:checked + .slider:before {
-  left: calc(100% - (var(--size-of-icon) + var(--slider-offset)));
-  background: #303136;
-  box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
-}
-
-/* Profile */
-.profile {
-    display: flex;
-    flex-direction: column; /* mantém os itens em coluna */
-    align-items: center;    /* centraliza na horizontal */
-    justify-content: center;/* centraliza na vertical */
-    gap: 10px;              /* espaço entre os elementos */
-    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
 }
 
 .profile-pic {
@@ -220,18 +132,63 @@ input:checked + .slider:before {
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid black; /* padrão para claro */
+    border: 3px solid var(--color-text-light);
     margin-bottom: 15px;
-    transition: border-color 0.3s;
+    transition: border-color var(--transition);
 }
 
 body.dark .profile-pic {
-    border-color: white;
+    border-color: var(--color-text-dark);
+}
+
+#change-photo-btn {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: none;
+    background: var(--color-text-light);
+    color: var(--color-bg-light);
+    font-size: 0.9rem;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity var(--transition), background var(--transition), color var(--transition), transform 0.15s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#change-photo-btn:hover, #change-photo-btn:focus {
+    opacity: 1;
+    background: var(--color-bg-light);
+    color: var(--color-text-light);
+    transform: translateX(-50%) scale(1.1);
+    outline: 2px solid var(--color-accent);
+}
+
+#change-photo-btn:active {
+    transform: translateX(-50%) scale(0.95);
+    background: var(--color-text-light);
+    color: var(--color-bg-light);
+    opacity: 1;
+}
+
+body.dark #change-photo-btn {
+    background: var(--color-text-dark);
+    color: var(--color-bg-dark);
+}
+
+body.dark #change-photo-btn:hover, body.dark #change-photo-btn:focus {
+    background: var(--color-bg-dark);
+    color: var(--color-text-dark);
+    outline: 2px solid var(--color-accent-dark1);
 }
 
 .username {
     font-size: 2rem;
     margin-bottom: 5px;
+    font-weight: 500;
 }
 
 .bio {
@@ -240,7 +197,6 @@ body.dark .profile-pic {
     margin-bottom: 30px;
 }
 
-/* Links */
 .links {
     display: flex;
     flex-direction: column;
@@ -250,90 +206,133 @@ body.dark .profile-pic {
 
 .social-icon {
     display: block;
-    background: rgba(0, 0, 0, 0.05); /* fundo claro no modo claro */
+    background: var(--color-btn-bg);
     padding: 15px;
-    border-radius: 10px;
-    color: black; /* texto preto no claro */
+    border-radius: var(--radius);
+    color: var(--color-text-light);
     font-size: 1.1rem;
     text-decoration: none;
-    transition: all 0.3s;
+    transition: background var(--transition), color var(--transition), transform 0.2s;
 }
 
-.social-icon:hover {
-    background: rgba(0, 0, 0, 0.15);
+.social-icon:hover, .social-icon:focus {
+    background: var(--color-btn-bg-hover);
     transform: scale(1.05);
+    outline: 2px solid var(--color-accent);
 }
 
 body.dark .social-icon {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
+    background: var(--color-btn-bg-dark);
+    color: var(--color-text-dark);
 }
 
-body.dark .social-icon:hover {
-    background: rgba(255, 255, 255, 0.3);
+body.dark .social-icon:hover, body.dark .social-icon:focus {
+    background: var(--color-btn-bg-dark-hover);
+    outline: 2px solid var(--color-accent-dark1);
 }
 
-/* Botão para alternar tema */
 #theme-toggle {
     margin-top: 15px;
     padding: 8px 16px;
     border: none;
     border-radius: 8px;
-    background-color: #eee;
+    background: #eee;
     color: #333;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Montserrat', sans-serif;
+    transition: background var(--transition), color var(--transition);
     font-size: 1rem;
 }
 
 body.dark #theme-toggle {
-    background-color: #333;
+    background: #333;
     color: #eee;
 }
 
-/* Footer */
 footer {
     text-align: center;
     font-size: 14px;
     opacity: 0.8;
     margin-top: auto;
-    transition: color 0.3s;
+    transition: color var(--transition);
 }
 
 body.dark footer {
     color: #ccc;
 }
 
-/* ======== RESPONSIVIDADE ======== */
-
-/* 📱 Mobile */
-@media (max-width: 600px) {
-    .username {
-        font-size: 1.5rem;
-    }
-    .bio {
-        font-size: 1rem;
-    }
-    .social-icon {
-        font-size: 1rem;
-        padding: 12px;
-    }
+/* Switch container */
+.switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    --width-of-switch: 3.5em;
+    --height-of-switch: 2em;
+    --size-of-icon: 1.4em;
+    --slider-offset: 0.3em;
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
 }
 
-/* 📱➡💻 Tablet */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #595970;
+    transition: background var(--transition);
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: var(--size-of-icon);
+    width: var(--size-of-icon);
+    border-radius: 20px;
+    left: var(--slider-offset);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg, var(--color-accent), var(--color-accent2) 70%);
+    transition: left var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+input:checked + .slider {
+    background: #303136;
+}
+
+input:checked + .slider:before {
+    left: calc(100% - (var(--size-of-icon) + var(--slider-offset)));
+    background: #303136;
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 600px) {
+    .username { font-size: 1.5rem; }
+    .bio { font-size: 1rem; }
+    .social-icon { font-size: 1rem; padding: 12px; }
+    .profile-pic { width: 150px; height: 150px; }
+    .decorative-blob { width: 150px; height: 150px; }
+}
+
 @media (min-width: 601px) and (max-width: 1024px) {
     .links {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
     }
-    .social-icon {
-        width: 45%;
-    }
+    .social-icon { width: 45%; }
 }
 
-/* 💻 PC */
 @media (min-width: 1025px) {
     .links {
         flex-direction: row;
@@ -344,5 +343,4 @@ body.dark footer {
         flex-direction: column;
         width: 200px;
     }
-
 }
