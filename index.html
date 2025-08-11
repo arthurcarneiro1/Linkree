@@ -5,9 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arthur Dev</title>
+
+  <!-- Reset CSS para normalizar estilos entre navegadores -->
   <link rel="stylesheet" href="css/reset.css">
+  <!-- Seu CSS principal -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Biblioteca de ícones Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Ícone da aba do navegador -->
   <link rel="icon" href="img/icon.png" type="image/x-icon">
 
 </head>
@@ -18,12 +23,24 @@
     <div class="profile">
       <div class="profile-pic-wrapper" style="position: relative; display: inline-block;">
         <div class="decorative-blob"></div>
+
+        <!-- =========================== -->
+        <!-- FOTO DE PERFIL - TROQUE AQUI -->
+        <!-- Substitua o arquivo 'Perfil.jpg' dentro da pasta img/ -->
         <img src="img/Perfil.jpg" alt="Profile Picture" class="profile-pic">
+
+        <!-- Botão para trocar foto -->
         <button id="change-photo-btn">Click</button>
       </div>
+
+      <!-- NOME DO USUÁRIO - ALTERE AQUI -->
       <h1 class="username">Arthur Carneiro</h1>
+
+      <!-- BIO OU DESCRIÇÃO - ALTERE AQUI -->
       <p class="bio">Eng. de Software</p>
+
       <div class="extra-links">
+        <!-- LINKS EXTRAS - ALTERE OS hrefs e textos -->
         <a href="404.html" target="_blank" class="btn-link"><i class="fas fa-folder-open"></i> Portfólio</a>
         <a href="404.html" target="_blank" class="btn-link"><i class="fas fa-file-alt"></i> Currículo</a>
       </div>
@@ -36,6 +53,7 @@
     </div>
 
     <div class="links">
+      <!-- LINKS SOCIAIS - TROQUE OS hrefs para os seus perfis -->
       <a href="https://github.com/arthurcarneiro1" class="social-icon" target="_blank"><i class="fab fa-github"></i> GitHub</a>
       <a href="https://www.linkedin.com/in/carneirodev2002/" class="social-icon" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       <a href="404.html" class="social-icon"><i class="fa-brands fa-instagram"></i> Instagram</a>
@@ -49,19 +67,21 @@
     <p>Desenvolvido por <strong>Arthur Carneiro</strong> © 2025</p>
   </footer>
 
-  <!-- Música de fundo -->
+  <!-- ========================================= -->
+  <!-- MÚSICA DE FUNDO - TROQUE O ARQUIVO AQUI -->
+  <!-- Salve sua música em 'audio/musica.mp3' ou altere o caminho abaixo -->
   <audio id="bg-music" autoplay loop muted>
     <source src="audio/musica.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
 
-  <!-- Botão de som -->
+  <!-- Botão para ligar/desligar som da música -->
   <button id="sound-toggle" class="sound-btn">
     <i class="fas fa-volume-mute"></i>
   </button>
 
+  <!-- Seu arquivo JavaScript principal -->
   <script src="js/main.js"></script>
- 
 
 </body>
 </html>
