@@ -1,21 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
 
+/* ======================================= */
+/* Variáveis CSS para facilitar a personalização */
+/* ======================================= */
+
 :root {
+    /* Fundo claro da página */
     --color-bg-light: #fff;
+
+    /* Fundo escuro da página */
     --color-bg-dark: #121212;
+
+    /* Cor do texto para modo claro */
     --color-text-light: #000;
+
+    /* Cor do texto para modo escuro */
     --color-text-dark: #fff;
+
+    /* Cor de destaque principal (exemplo: botões, links) */
     --color-accent: #ff0080;
+
+    /* Segunda cor de destaque */
     --color-accent2: #ff8c00;
+
+    /* Cor de destaque para modo escuro (tom 1) */
     --color-accent-dark1: #00e1ff;
+
+    /* Cor de destaque para modo escuro (tom 2) */
     --color-accent-dark2: #0080ff;
+
+    /* Fundo dos botões no modo claro */
     --color-btn-bg: rgba(0, 0, 0, 0.05);
+
+    /* Fundo dos botões no modo claro ao passar o mouse */
     --color-btn-bg-hover: rgba(0, 0, 0, 0.15);
-    --color-btn-bg-dark: rgba(255,255,255,0.1);
-    --color-btn-bg-dark-hover: rgba(255,255,255,0.3);
-    --transition: 0.3s cubic-bezier(.4,0,.2,1);
+
+    /* Fundo dos botões no modo escuro */
+    --color-btn-bg-dark: rgba(255, 255, 255, 0.1);
+
+    /* Fundo dos botões no modo escuro ao passar o mouse */
+    --color-btn-bg-dark-hover: rgba(255, 255, 255, 0.3);
+
+    /* Tempo e tipo da transição para efeitos suaves */
+    --transition: 0.3s cubic-bezier(.4, 0, .2, 1);
+
+    /* Raio das bordas arredondadas (em pixels) */
     --radius: 10px;
 }
+
+/* 
+Para alterar a cor principal do seu template, por exemplo, 
+modifique o valor da variável --color-accent para a cor desejada.
+*/
+
 
 body {
     font-family: 'Montserrat', sans-serif;
